@@ -210,3 +210,6 @@ Traceroute shows all the hops a packet takes
      - big endian: ARM (iPhone)
   - internet is big Endian
   - important to make sure you're properly translating
+
+## IPv4 Addresses
+  - 
