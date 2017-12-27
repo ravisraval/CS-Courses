@@ -171,3 +171,21 @@ Traceroute shows all the hops a packet takes
   5. Continuous improvement
   6. Peer-to-peer communications
      - each layer only has to worry about its corresponding layer - top level applications don't have to concern themselves with the other 3 layers in the 4 layer system
+
+## Encapsulation
+  - principle by which you organize information in packets so that you can maintain layers
+  - a TCP segment is inside an IP packet which is inside an Ethernet frame
+  - each protocol layer has headers, then payload/data, then footers.
+    - eg. IP packet's payload is a full TCP segment
+
+  - A VPN is an example of lots of encapsulation. From outside to inside:
+    - ethernet link frame
+    - IP network packet
+    - TCP transport segment
+    - a secured TLS presentation message
+    - IP network packet
+    - TCP transport segment
+    - HTTP web application payload
+
+  - encapsulation is how layering manifests in data
+  - simplify layer implementation
