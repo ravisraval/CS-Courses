@@ -112,3 +112,34 @@
 
 Wireshark allows you to see packets
 Traceroute shows all the hops a packet takes
+
+### Packet Switching
+   - Independently for each arriving packet, pick its outgoing link. If the link is free, send it. Else, hold the packet for later.
+
+   - **Self-routing / source routing**
+      - Each packet contains an explicit route, specifying the ids of each packet switch along the way
+      - generally doesn't happen - big security issues
+    - nowadays, internet places a small amount of state in each switch, telling it which hop to next send packets to
+
+##### consequences of packet switching
+  - switch can make individual, local decisions without knowing anything other than the destination address
+  - switch can efficiently share links between two hosts
+    - wireless router in a home
+
+##### no per-flow state required
+  - **flow**: a collection of datagrams belonging to the same end-to-end communication, e.g. TCP connection
+    - for instance, one skype call
+  - packet swithes don't need state for each flow - each packet is self-contained
+  - no per-flow state to be added/removed from each switch
+  - no per-flow state to be stored
+  - no per-flow state to be changed upon failure
+
+##### Efficient sharing of links
+  - Data traffic is bursty
+    - packet switching allows flows to use all available link capacity
+    - packet switching allows flows to share link capacity
+  - this is called **statistical multiplexing**
+
+### Summary of packet switching:
+  - a packet is a self-contained unit of data that carries all the information needed for it to reach its destination
+  - packet switch - Independently for each arriving packet, pick its outgoing link. If the link is free, send it. Else, hold the packet for later.
