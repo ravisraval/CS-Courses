@@ -189,3 +189,24 @@ Traceroute shows all the hops a packet takes
 
   - encapsulation is how layering manifests in data
   - simplify layer implementation
+
+## Memory, byte order, and packet formats
+  - computers need to agree on what fields messages have, and how the fields and arranged and formatted
+  - when a computer sends a message, it must create a copy of it in memory, which then passes to the networking card
+  - similarly, when a computer receives a message, the networking card puts that message in memory, which the software can then access
+
+#### Endianness
+   - How should a computer represent a multibyte value?
+   - To represent the number 1,024, which is 0x0400 in hexidecimal.
+   - This value requires 16 bits, or 2 bytes.
+   - Which byte comes first? 0x00 or 0x04?
+
+   - **Little Endian** places the least significant byte at the lowest address in memory
+   - **Big Endian** places the most significant byte at the lowest address
+
+#### Network Byte order
+  - different processors use different Endianness
+     - little endian x86
+     - big endian: ARM (iPhone)
+  - internet is big Endian
+  - important to make sure you're properly translating
