@@ -85,4 +85,30 @@
       - some headers carry extra fields with extra info
     - Checksum
       - in case header is corrupted, we probably won't deliver the packet to the wrong destination
-    
+
+### Life of a Packet
+
+##### TCP byte stream
+ - most web traffic happens over transport control protocol
+ - typically, a client and a server
+ - server listens for connection requests
+ - client issues connection request, which server responds to
+ - this exchange takes three messages, called the **3-way handshake**
+      1. client sends synchronized message, "SYN"
+      2. server responds with a synchronized message that acknowledges the client's message, "SYN/ACK"
+      3. client responds by acknowledging server's response, "ACK".
+
+- The network layer doesn't see a difference between packets going to different applications on the same computer, so to open a TCP stream to another program, we need two addresses:
+  - IP address - network uses to send packets to the right computer
+  - TCP port - tells the computer which application to deliver the data to
+    - web servers often run on port 80
+- Routers themselves have IP addresses - eg if you want to log in to the router itself
+
+#### Router Forwarding Table
+  - contains ip addresses patterns and corresponding links
+  - Router indexes into its forwarding table and checks which pattern BEST, or most SPECIFICALLY, matches pattern
+  - default route is the least specific - it matches any IP address
+    - especially useful in edge networks, ie, sending out to internet vs another router / host within the current network
+
+Wireshark allows you to see packets
+Traceroute shows all the hops a packet takes
