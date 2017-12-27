@@ -143,3 +143,31 @@ Traceroute shows all the hops a packet takes
 ### Summary of packet switching:
   - a packet is a self-contained unit of data that carries all the information needed for it to reach its destination
   - packet switch - Independently for each arriving packet, pick its outgoing link. If the link is free, send it. Else, hold the packet for later.
+
+## Layering
+  - the name we give to the organization of a system into a number of separate functional components, or layers.
+  - layers are hierarchical and communicate only with layers directly above and below
+  - each layer provides a well-defined service to the layer above, using the services provided by layers below and its own private processing
+
+#### Layering in a computer system
+  1. as programmers, we communicate with the compiler, the link below
+  2. the compiler is a self-contained, functional component that is in charge of lexical analysis, parsing our code, preprocessing declarations, and then code generation and optimization.
+  3. the compiler passes object code to the linker
+  4. the linker links together compiled object files and libraries and generates an executable file, passing it to the CPU
+  5. the CPU, real or virtual, then executes the code.
+
+  - many benefits to layering:
+     - breaks down overall problem of writing programs that execute on hardware into modules, each with a well defined role and providing a well defined service to the layer above
+     - clear separation of concerns, so layers don't have to worry about doing the job of the other layers.
+     - each layer can therefore be improved/upgraded/replaced without interfering with other layers
+
+  - Sometimes you do have to break layer boundaries, but at a great cost, as you lose the benefits of layering.
+
+###### 6 main reasons for layering
+  1. Smaller, more manageable modules
+  2. Well defined service
+  3. Reuse
+  4. Separation of concerns
+  5. Continuous improvement
+  6. Peer-to-peer communications
+     - each layer only has to worry about its corresponding layer - top level applications don't have to concern themselves with the other 3 layers in the 4 layer system
