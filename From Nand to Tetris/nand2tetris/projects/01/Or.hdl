@@ -18,4 +18,9 @@ CHIP Or {
     Not (in=b, out=notb);
     And (a=nota, b=notb, out=and1);
     Not(in=and1, out=out);
+
+    //from online
+    // Nand (a=a, b=a, out=nand1);
+    // Nand (a=b, b=b, out=nand2);
+    // Nand (a=nand1, b=nand2, out=out);
 }
