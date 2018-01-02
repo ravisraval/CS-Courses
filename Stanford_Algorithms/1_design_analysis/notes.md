@@ -25,3 +25,7 @@ Basically, do merge sort, but:
 Run time of subroutine: O(n) [merge] + O(n) [running total] = O(n)
 
 This subroutine, (sort_and_count) runs log(n) times.
+
+## Master method
+
+![master method](Master_Method.png)
