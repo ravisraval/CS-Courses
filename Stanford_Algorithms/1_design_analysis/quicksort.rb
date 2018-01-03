@@ -44,4 +44,4 @@ def quicksort(arr, comps)
 end
 
 new_arr = open('./QuickSort.txt').each_line.map { |line| line.chomp.to_i }
-p quicksort(new_arr, 0)
+p quicksort(new_arr, 0)[1]
