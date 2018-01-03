@@ -1,8 +1,20 @@
-def quicksort(arr)
-  return arr if arr.length <= 1
+def quicksort(arr, comps)
+  return [arr, comps] if arr.length <= 1
   # swap mid with first
-  # idx = 0
-  idx = rand(arr.length)
+  if arr.length.even?
+    k = (arr.length / 2 - 1)
+    v = arr[arr.length / 2 - 1]
+  else
+    k = (arr.length / 2)
+    v = arr[arr.length / 2]
+  end
+  pivots = {
+    0 => arr.first,
+    k => v,
+    arr.length - 1 => arr.last
+  }
+  idx = pivots.sort_by { |k, v| v }[1][0]
+  # idx = rand(arr.length)
   # loop do
   #   break if arr[idx] > arr[idx + 1]
   #   idx += 1
@@ -22,19 +34,14 @@ def quicksort(arr)
     end
     j += 1
   end
-  #put pivot back
+  comps += arr.length - 1
+  # put pivot back
   arr[0], arr[i - 1] = arr[i - 1], arr[0]
 
-  arr[0...i - 1] = quicksort(arr[0...i - 1])
-  arr[i..-1] = quicksort(arr[i..-1])
-
-  arr
+  arr[0...i - 1], comps = quicksort(arr[0...i - 1], comps)
+  arr[i..-1], comps = quicksort(arr[i..-1], comps)
+  [arr, comps]
 end
 
-
-
-a = Time.now
-100000.times do |t|
-  quicksort([3, 1, 8, 5, 4, 2, 7, 6, 0, 4, 10, 52, 42, 13, 2, 26, 94, 75])
-end
-puts Time.now - a
+new_arr = open('./QuickSort.txt').each_line.map { |line| line.chomp.to_i }
+p quicksort(new_arr, 0)
